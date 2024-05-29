@@ -1,0 +1,16 @@
+#creating two dimensional array
+import numpy as np
+arr = np.array([[1,2,3],[4,5,6],[7,8,9]])
+print(arr)
+#inserting a new column
+print("Inserting a new column")
+newArr = np.insert(arr,0,[11,12,13],axis=1)
+print(newArr)
+#inserting a new row
+print("Inserting a new row")
+newArr = np.insert(arr,0,[11,12,13],axis=0)
+print(newArr)
+#appending a new column
+print("Appending a new row")
+newArr = np.append(arr,[[11,12,13]],axis=0)
+print(newArr)
