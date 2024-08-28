@@ -58,6 +58,6 @@ new_list.append(1)
 print(new_list)
 new_list.prepend(0)
 print(new_list)
-new_list.insert(1,2)
+new_list.insert(0,2)
 print(new_list)
             

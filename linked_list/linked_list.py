@@ -52,8 +52,19 @@ class LinkedList:
             temp_node.next=new_node
         self.length+=1
         return self
-    
-    
+    def traverse(self):
+        temp_node=self.head
+        while temp_node is not None:
+            print(temp_node.value)
+            temp_node=temp_node.next
+        return self
+    def search(self,value):
+        temp_node=self.head
+        while temp_node is not None:
+            if temp_node.value==value:
+                return True
+            temp_node=temp_node.next
+        return False
 
 
 
@@ -64,4 +75,5 @@ my_linked_list.append(1)
 my_linked_list.append(2)
 my_linked_list.prepend(0)
 my_linked_list.insert(1,3)
+my_linked_list.traverse()
 print(my_linked_list)
