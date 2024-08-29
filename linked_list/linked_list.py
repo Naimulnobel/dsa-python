@@ -60,10 +60,28 @@ class LinkedList:
         return self
     def search(self,value):
         temp_node=self.head
+        index=0
         while temp_node is not None:
             if temp_node.value==value:
-                return True
+                
+                return index
             temp_node=temp_node.next
+            index+=1
+        return -1
+    def get(self,index):
+        if index>=self.length:
+            return None
+        if index<0:
+            return None
+        temp_node=self.head
+        for _ in range(index):
+            temp_node=temp_node.next
+        return temp_node
+    def set_value(self,index,value):
+        temp_node=self.get(index)
+        if temp_node:
+            temp_node.value=value
+            return True
         return False
 
 
