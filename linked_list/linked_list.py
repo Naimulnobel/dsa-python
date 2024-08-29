@@ -83,6 +83,55 @@ class LinkedList:
             temp_node.value=value
             return True
         return False
+    def pop_first(self):
+        if self.length==0:
+            return None
+        temp_node=self.head
+        if self.length==1:
+            self.head=None
+            self.tail=None
+        else:
+            self.head=self.head.next
+            temp_node.next=None
+        self.length-=1
+        
+        
+        return temp_node
+    def pop(self):
+        if self.length==0:
+            return None
+        temp_node=self.tail
+        temp=self.head
+        if self.length==1:
+            self.head=None
+            self.tail=None
+        else:
+           while temp.next is not self.tail:
+               temp=temp.next
+           temp.next=None
+           self.tail=temp
+        self.length-=1
+        return temp_node
+    def remove(self,index):
+        if index>=self.length:
+            return None
+        if index<0:
+            return None
+        if index==0:
+            self.head=self.head.next
+        else:
+            prev_node=self.get(index-1)
+            popped_node=prev_node.next
+            prev_node.next=popped_node.next
+            popped_node.next=None
+        self.length-=1
+        return popped_node
+    def delete_all(self):
+        self.head=None
+        self.tail=None
+        self.length=0   
+        return self
+
 
 
 
@@ -92,6 +141,10 @@ my_linked_list=LinkedList()
 my_linked_list.append(1)
 my_linked_list.append(2)
 my_linked_list.prepend(0)
+print(my_linked_list)
 my_linked_list.insert(1,3)
+
 my_linked_list.traverse()
+
+my_linked_list.pop_first()
 print(my_linked_list)
