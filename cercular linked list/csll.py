@@ -126,7 +126,30 @@ class CSlinkedList:
             temp_node.next=None
         self.length-=1
         return temp_node
-
+    def remove(self,index):
+        if index==self.length-1:
+            return self.pop()
+        elif index==0:
+            return self.pop_first()
+        elif index<0 or index>=self.length:
+            return None
+        else:
+            temp=self.head
+            for _ in range(index-1):
+                temp=temp.next
+            temp_node=temp.next
+            temp.next=temp_node.next
+            temp_node.next=None
+            self.length-=1
+            return temp_node
+    def delete_all(self):
+        if self.length==0:
+            return
+        self.tail.next=None
+        self.head=None
+        self.tail=None
+        self.length=0
+        return self
 csll=CSlinkedList()
 csll.append(10)
 csll.append(20)
