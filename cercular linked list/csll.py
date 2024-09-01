@@ -96,7 +96,36 @@ class CSlinkedList:
             temp.value=value
             return True
         return False
-    
+    def pop_first(self):
+        if self.length==0:
+            return None
+        temp_node=self.head
+        if self.length==1:
+            self.head=None
+            self.tail=None
+        else:
+            self.head=self.head.next
+            self.tail.next=self.head
+            temp_node.next=None
+        self.length-=1
+        return temp_node
+
+    def pop(self):
+        if self.length==0:
+            return None
+        temp_node=self.tail
+        if self.length==1:
+            self.head=None
+            self.tail=None
+        else:
+            temp=self.head
+            while temp.next is not self.tail:
+                temp=temp.next
+            temp.next=self.head
+            self.tail=temp
+            temp_node.next=None
+        self.length-=1
+        return temp_node
 
 csll=CSlinkedList()
 csll.append(10)
@@ -107,5 +136,12 @@ csll.insert(0,100)
 print(csll)
 csll.traverse()
 print(csll.search(10))
+print(csll.get(0))
+csll.set_value(0,200)
+print(csll)
+csll.pop_first()
+print(csll)
+csll.pop()
+print(csll)
    
     
