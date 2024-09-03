@@ -18,7 +18,7 @@ class CSlinkedList:
             temp_node=temp_node.next
             if temp_node==self.head:
                 break
-            result+='-> '
+            result+=' -> '
         return result
     
     def append(self,value):
