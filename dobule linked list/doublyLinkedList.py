@@ -71,7 +71,71 @@ class DoublyLinkedList:
             for _ in range(self.length-1,index,-1):
                 temp=temp.prev
         return temp
-    
+    def set_value(self,index,value):
+        temp=self.get(index)
+        if temp:
+            temp.value=value
+            return True
+        return False
+    def insert(self,index,value):
+        new_node=Node(value)
+        if index==0:
+            return self.prepend(value)
+        elif index==self.length:
+            return self.append(value)
+        elif index<0 or index>self.length:
+            raise Exception('index is out of range')
+        else:
+            temp_node=self.get(index-1)
+            new_node.next=temp_node.next
+            temp_node.next=new_node
+            new_node.prev=temp_node
+            new_node.next.prev=new_node
+        self.length+=1
+        return self
+    def pop_first(self):
+        if self.length==0:
+            return None
+        temp=self.head
+        if self.length==1:
+            self.head=None
+            self.tail=None
+        else:
+            self.head=temp.next
+            self.head.prev=None
+            temp.next=None
+        self.length-=1
+        return temp
+    def pop(self):
+        if self.length==0:
+            return None
+        temp=self.tail
+        if self.length==1:
+            self.head=None
+            self.tail=None
+        else:
+            self.tail=temp.prev
+            self.tail.next=None
+            temp.prev=None
+        self.length-=1
+        return temp
+    def remove(self,index):
+        if index<0 or index>=self.length:
+            return None
+        if index==0:
+            return self.pop_first()
+        elif index==self.length-1:
+            return self.pop()
+        else:
+            temp=self.get(index-1)
+            temp_node=temp.next
+            temp.next=temp_node.next
+            temp_node.next.prev=temp
+            temp_node.next=None
+            temp_node.prev=None
+        self.length-=1
+        return temp_node
+
 new_list=DoublyLinkedList()
 new_list.append(1)
 new_list.append(2)
