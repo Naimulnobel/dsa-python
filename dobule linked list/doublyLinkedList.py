@@ -135,6 +135,22 @@ class DoublyLinkedList:
             temp_node.prev=None
         self.length-=1
         return temp_node
+    def remove(self,index):
+        if index<0 or index>=self.length:
+            return None
+        if index==0:
+            return self.pop_first()
+        elif index==self.length-1:
+            return self.pop()
+        else:
+            temp=self.get(index)
+            temp.prev.next=temp.next
+            temp.next.prev=temp.prev
+            temp.next=None
+            temp.prev=None
+            
+        self.length-=1
+        return temp
 
 new_list=DoublyLinkedList()
 new_list.append(1)
