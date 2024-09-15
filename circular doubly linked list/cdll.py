@@ -51,3 +51,9 @@ class CDoublyLinkedList:
             self.tail.next=self.head
         self.length+=1
         return self
+
+cdll=CDoublyLinkedList()
+cdll.append(23)
+cdll.append(34)
+cdll.append(45)
+print(cdll)
