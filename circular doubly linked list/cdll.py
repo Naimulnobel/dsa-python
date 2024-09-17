@@ -52,9 +52,29 @@ class CDoublyLinkedList:
             self.tail.next=self.head
         self.length+=1
         return self
-
+    def traverse(self):
+        temp=self.head
+        while temp:
+            print(temp.value)
+            temp=temp.next
+            if temp==self.head:
+                break
+        return self
+    def reverse_traverse(self):
+        temp=self.tail
+        while temp:
+            print(temp.value)
+            temp=temp.prev
+            if temp==self.tail:
+                break
+        return self
+  
+    
 cdll=CDoublyLinkedList()
 cdll.append(23)
 cdll.append(34)
 cdll.append(45)
-print(cdll)
+cdll.traverse()
+print('-------------------')
+cdll.reverse_traverse()
+# print(cdll)
