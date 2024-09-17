@@ -15,10 +15,11 @@ class CDoublyLinkedList:
         result=''
         while temp:
             result+=str(temp.value)
+            temp=temp.next        
+            if temp ==self.head:
+                break
+            result+=' <-> '
             
-            if temp.next:
-                result+='<->'
-            temp=temp.next
         return result
     def append(self,value):
         new_node=Node(value)
