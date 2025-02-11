@@ -37,8 +37,44 @@ class LinkedList:
             self.head=new_node
         self.length+=1
         return self
+    def insert(self,index,value):
+       
+        if index==0:
+            self.prepend(value)
+        elif index>=self.length:
+            self.append(value)
+        else:
+            new_node=Node(value)
+            temp_node=self.head
+            for _ in range(index-1):
+                temp_node=temp_node.next
+            new_node.next=temp_node.next
+            temp_node.next=new_node
+        self.length+=1
+        return self
+    def traverse(self):
+     
+        temp_node=self.head
+        while temp_node is not None:
+            print(temp_node.value)
+            temp_node=temp_node.next
+        return self
+    def search(self,value):
+        temp_node=self.head
+        index=0
+        while temp_node is not None:
+            if temp_node.value==value:
+                return index
+            temp_node=temp_node.next
+            index+=1
+        return -1
+
+            
+        
     
 
 ll=LinkedList()
 print(ll.append(2))
 print(ll.prepend(1))
+print(ll.traverse())
+print(ll.search(2))
